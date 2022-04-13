@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-my-form',
-  templateUrl: './my-form.component.html',
-  styleUrls: ['./my-form.component.scss']
+  selector: 'app-my-prime-ngform',
+  templateUrl: './my-prime-ngform.component.html',
+  styleUrls: ['./my-prime-ngform.component.scss']
 })
-export class MyFormComponent implements OnInit {
+export class MyPrimeNGFormComponent implements OnInit {
+
 
   sportsList = [
     {

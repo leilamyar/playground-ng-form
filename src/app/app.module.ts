@@ -6,11 +6,13 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 
 import { AppComponent } from './app.component';
 import { MyFormComponent } from './comps/my-form/my-form.component';
+import { MyPrimeNGFormComponent } from './comps/my-prime-ngform/my-prime-ngform.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MyFormComponent
+    MyFormComponent,
+    MyPrimeNGFormComponent
   ],
   imports: [
     BrowserModule,
