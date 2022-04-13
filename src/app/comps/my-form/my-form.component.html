@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Angular Radio Button Example - FreakyJolly.com</h1>
+
+  <form [formGroup]="myform" (ngSubmit)="submit()">
+
+    <div class="form-group">
+      <label for="sport">Select a Sport:</label>
+      <div *ngFor="let sport of sportsList">
+        <input id="sport-{{sport.id}}" type="radio" value="{{sport.value}}" name="{{sport.name}}"
+          formControlName="{{sport.name}}" (change)="onRadioChange(sport)">
+        <label for="sport-{{sport.id}}">{{sport.label}}</label>
+      </div>
+      <div *ngIf="f['sport'].touched && f['sport'].invalid" class="alert alert-danger">
+        <div *ngIf="f['sport'].errors?.['required']">Name is required.</div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="!myform.valid">Submit</button>
+
+    <h5>Selected Value: {{myform.value | json}}</h5>
+  </form>
+</div>
