@@ -1,22 +1,58 @@
-<div class="container">
-  <h1>PrimeNG Form</h1>
+<h1>My PrimeNG Form</h1>
+
+<p-card>
+  <!-- <div class="container"> -->
 
   <form [formGroup]="myform" (ngSubmit)="submit()">
 
-    <div class="form-group">
-      <label for="sport">Select a Sport:</label>
-      <div *ngFor="let sport of sportsList">
-        <input id="sport-{{sport.id}}" type="radio" value="{{sport.value}}" name="{{sport.name}}"
-          formControlName="{{sport.name}}" (change)="onRadioChange(sport)">
-        <label for="sport-{{sport.id}}">{{sport.label}}</label>
-      </div>
-      <div *ngIf="f['sport'].touched && f['sport'].invalid" class="alert alert-danger">
-        <div *ngIf="f['sport'].errors?.['required']">Name is required.</div>
-      </div>
+    <h5>Basic</h5>
+
+    <label for="city">Select a city</label>
+
+    <div class="field-radiobutton">
+      <p-radioButton formControlName="city" name="city" value="Chicago" inputId="city1" id="city1"></p-radioButton>
+      <label for="city1">Chicago</label>
     </div>
+    <div class="field-radiobutton">
+      <p-radioButton formControlName="city" name="city" value="Los Angeles" inputId="city2"></p-radioButton>
+      <label for="city2">Los Angeles</label>
+    </div>
+    <div class="field-radiobutton">
+      <p-radioButton formControlName="city" name="city" value="New York" inputId="city3"></p-radioButton>
+      <label for="city3">New York</label>
+    </div>
+    <div class="field-radiobutton">
+      <p-radioButton formControlName="city" name="city" value="San Francisco" inputId="city4"></p-radioButton>
+      <label for="city4">San Francisco</label>
+    </div>
+
+    <!-- <h5>Dynamic Values, Preselection, Value Binding and Disabled Option</h5>
+  
+      <div *ngFor="let category of categories" class="field-checkbox"> -->
+    <!-- <p-radioButton [inputId]="category.key" name="category" [value]="category" [(ngModel)]="selectedCategory" [disabled]="category.key === 'R'"></p-radioButton>
+          <label [for]="category.key">{{category.name}}</label> -->
+    <!-- </div> -->
+
+
+
+    <!--
+      <div class="form-group">
+        <label for="sport">Select a Sport:</label>
+        <div *ngFor="let sport of sportsList">
+          <input id="sport-{{sport.id}}" type="radio" value="{{sport.value}}" name="{{sport.name}}"
+            formControlName="{{sport.name}}" (change)="onRadioChange(sport)">
+          <label for="sport-{{sport.id}}">{{sport.label}}</label>
+        </div>
+        <div *ngIf="f['sport'].touched && f['sport'].invalid" class="alert alert-danger">
+          <div *ngIf="f['sport'].errors?.['required']">Name is required.</div>
+        </div>
+      </div> -->
+
+
 
     <button class="btn btn-primary" type="submit" [disabled]="!myform.valid">Submit</button>
 
     <h5>Selected Value: {{myform.value | json}}</h5>
   </form>
-</div>
+  <!-- </div> -->
+</p-card>

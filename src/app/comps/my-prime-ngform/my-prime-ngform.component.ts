@@ -33,14 +33,27 @@ export class MyPrimeNGFormComponent implements OnInit {
     }
   ]
 
+  cityValue: string;
+
+  selectedCategory: any = null;
+
+  categories: any[] = [
+    { name: 'Accounting', key: 'A' },
+    { name: 'Marketing', key: 'M' },
+    { name: 'Production', key: 'P' },
+    { name: 'Research', key: 'R' }
+  ];
+
   myform = new FormGroup({
-    sport: new FormControl('', Validators.required)
+    // sport: new FormControl('', Validators.required),
+    city: new FormControl('', Validators.required),
+    // category: new FormControl('', Validators.required),
   });
 
   constructor() { }
 
   ngOnInit(): void {
-
+    this.selectedCategory = this.categories[1];
   }
   get f() {
     // console.log('form controls:', this.myform.controls);
