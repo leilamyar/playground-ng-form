@@ -9,45 +9,20 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class MyPrimeNGFormComponent implements OnInit {
 
 
-  sportsList = [
-    {
-      id: 1,
-      name: 'sport',
-      value: 'cricket',
-      label: 'Cricket'
-    }, {
-      id: 2,
-      name: 'sport',
-      value: 'football',
-      label: 'Football'
-    }, {
-      id: 3,
-      name: 'sport',
-      value: 'swimming',
-      label: 'Swimming'
-    }, {
-      id: 4,
-      name: 'sport',
-      value: 'hockey',
-      label: 'Hockey'
-    }
-  ]
-
   cityValue: string;
 
   selectedCategory: any = null;
 
   categories: any[] = [
-    { name: 'Accounting', key: 'A' },
-    { name: 'Marketing', key: 'M' },
-    { name: 'Production', key: 'P' },
-    { name: 'Research', key: 'R' }
+    { value: 'Accounting', name: 'category', key: 'A' },
+    { value: 'Marketing', name: 'category', key: 'M' },
+    { value: 'Production', name: 'category', key: 'P' },
+    { value: 'Research', name: 'category', key: 'R' }
   ];
 
   myform = new FormGroup({
-    // sport: new FormControl('', Validators.required),
     city: new FormControl('', Validators.required),
-    // category: new FormControl('', Validators.required),
+    category: new FormControl('', Validators.required),
   });
 
   constructor() { }
