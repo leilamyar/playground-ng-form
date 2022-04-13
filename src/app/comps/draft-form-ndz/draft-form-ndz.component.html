@@ -1,0 +1,52 @@
+<p-toolbar>
+  <h1>Draft Form NDZ</h1>
+</p-toolbar>
+
+<p-card>
+
+  <form [formGroup]="myform" (ngSubmit)="submit()">
+
+    <h5>Basic</h5>
+
+    <label for="city">Select a city</label>
+
+    <div class="field-radiobutton">
+      <p-radioButton formControlName="city" inputId="city1" name="city" value="Chicago"></p-radioButton>
+      <label for="city1">Chicago</label>
+    </div>
+    <div class="field-radiobutton">
+      <p-radioButton formControlName="city" inputId="city2" name="city" value="Los Angeles"></p-radioButton>
+      <label for="city2">Los Angeles</label>
+    </div>
+    <div class="field-radiobutton">
+      <p-radioButton formControlName="city" inputId="city3" name="city" value="New York"></p-radioButton>
+      <label for="city3">New York</label>
+    </div>
+    <div class="field-radiobutton">
+      <p-radioButton formControlName="city" inputId="city4" name="city" value="San Francisco"></p-radioButton>
+      <label for="city4">San Francisco</label>
+    </div>
+
+
+
+    <h5>Dynamic Values, Preselection, Value Binding and Disabled Option</h5>
+
+    <label for="category">Select a Service</label>
+
+    <div *ngFor="let category of categories" class="field-checkbox">
+
+      <p-radioButton formControlName="category" [inputId]="category.key" name="category" [value]="category.value">
+      </p-radioButton>
+
+      <label [for]="category.key">{{category.value}}</label>
+
+    </div>
+
+
+
+    <button class="btn btn-primary" type="submit" [disabled]="!myform.valid">Submit</button>
+
+    <h5>Selected Value: {{myform.value | json}}</h5>
+  </form>
+
+</p-card>
