@@ -21,12 +21,19 @@
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
+    "strictPropertyInitialization": false,
+    // "strictNullChecks": true,
+    // "noImplicitAny": true,
+    // "noImplicitThis": true,
+    // "strictFunctionTypes": true,
   },
   "angularCompilerOptions": {
+    "strictPropertyInitialization": false,
+    "strictNullChecks": true,
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
   }
 }
