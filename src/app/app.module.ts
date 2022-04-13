@@ -16,7 +16,7 @@ import { DraftFormNdzComponent } from './comps/draft-form-ndz/draft-form-ndz.com
     AppComponent,
     MyFormComponent,
     MyPrimeNGFormComponent,
-    DraftFormNdzComponent
+    DraftFormNdzComponent,
   ],
   imports: [
     BrowserModule,

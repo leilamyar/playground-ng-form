@@ -4,49 +4,24 @@
 
 <p-card>
 
-  <form [formGroup]="myform" (ngSubmit)="submit()">
+  <form [formGroup]="myForm" (ngSubmit)="submit()">
 
-    <h5>Basic</h5>
+    <label for="question">{{currentQuestion.questionLabel}}</label>
 
-    <label for="city">Select a city</label>
+    <div *ngFor="let answer of currentQuestion.answers" class="field-checkbox">
 
-    <div class="field-radiobutton">
-      <p-radioButton formControlName="city" inputId="city1" name="city" value="Chicago"></p-radioButton>
-      <label for="city1">Chicago</label>
-    </div>
-    <div class="field-radiobutton">
-      <p-radioButton formControlName="city" inputId="city2" name="city" value="Los Angeles"></p-radioButton>
-      <label for="city2">Los Angeles</label>
-    </div>
-    <div class="field-radiobutton">
-      <p-radioButton formControlName="city" inputId="city3" name="city" value="New York"></p-radioButton>
-      <label for="city3">New York</label>
-    </div>
-    <div class="field-radiobutton">
-      <p-radioButton formControlName="city" inputId="city4" name="city" value="San Francisco"></p-radioButton>
-      <label for="city4">San Francisco</label>
-    </div>
-
-
-
-    <h5>Dynamic Values, Preselection, Value Binding and Disabled Option</h5>
-
-    <label for="category">Select a Service</label>
-
-    <div *ngFor="let category of categories" class="field-checkbox">
-
-      <p-radioButton formControlName="category" [inputId]="category.key" name="category" [value]="category.value">
+      <p-radioButton formControlName="question" [inputId]="answer.id" name="question" [value]="answer.value">
       </p-radioButton>
 
-      <label [for]="category.key">{{category.value}}</label>
+      <label [for]="answer.id">{{answer.value}}</label>
 
     </div>
 
 
 
-    <button class="btn btn-primary" type="submit" [disabled]="!myform.valid">Submit</button>
+    <button class="btn btn-primary" type="submit" [disabled]="!myForm.valid">Submit</button>
 
-    <h5>Selected Value: {{myform.value | json}}</h5>
+    <h5>Selected Value: {{myForm.value | json}}</h5>
   </form>
 
 </p-card>

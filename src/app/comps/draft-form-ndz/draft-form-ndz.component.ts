@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { QUESTIONS } from 'src/app/data/questions';
+import { QuestionsService } from 'src/app/services/questions.service';
 
 @Component({
   selector: 'app-draft-form-ndz',
@@ -8,35 +10,41 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class DraftFormNdzComponent implements OnInit {
 
-  cityValue: string;
+  // selectedCategory: any = null;
 
-  selectedCategory: any = null;
+  currentQuestion: any = null;
 
-  categories: any[] = [
-    { value: 'Accounting', name: 'category', key: 'A' },
-    { value: 'Marketing', name: 'category', key: 'M' },
-    { value: 'Production', name: 'category', key: 'P' },
-    { value: 'Research', name: 'category', key: 'R' }
-  ];
+  // categories: any[] = [
+  //   { value: 'Accounting', name: 'category', key: 'A' },
+  //   { value: 'Marketing', name: 'category', key: 'M' },
+  //   { value: 'Production', name: 'category', key: 'P' },
+  //   { value: 'Research', name: 'category', key: 'R' }
+  // ];
 
-  myform = new FormGroup({
-    city: new FormControl('', Validators.required),
-    category: new FormControl('', Validators.required),
-  });
+  myForm: FormGroup;
+  // myform = new FormGroup({
+  //   // category: new FormControl('', Validators.required),
+  //   question: new FormControl('', Validators.required),
+  // });
 
-  constructor() { }
+  constructor(private _questionsSv: QuestionsService, private _fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.selectedCategory = this.categories[1];
+    // this.selectedCategory = this.categories[1];
+    this.currentQuestion = this._questionsSv.getCurrentQuestion();
+
+    this.myForm = this._fb.group({
+      question: ['', Validators.required],
+    });
+
   }
   get f() {
     // console.log('form controls:', this.myform.controls);
-
-    return this.myform.controls;
+    return this.myForm.controls;
   }
 
   submit() {
-    console.log('submitted:', this.myform.value);
+    console.log('submitted:', this.myForm.value);
     // this.getCtrl();
   }
 
@@ -45,22 +53,9 @@ export class DraftFormNdzComponent implements OnInit {
   }
 
   getCtrl() {
-    let xx = this.myform.controls['sport'] as FormControl;
+    let xx = this.myForm.controls['sport'] as FormControl;
     console.log('xx:', xx);
     console.log('xx:', xx.value);
   }
-
-  // addressForm = this.formBuilder.group({
-  //   street: ["PayneStreet"],
-  //   zip: [50000]
-  // });
-
-  // mainForm: FormGroup = this.formBuilder.group({
-  //   name: ["Max"],
-  //   address: this.addressForm    <-------------------
-  // });
-
-  // https://stackoverflow.com/questions/59284894/type-abstractcontrol-is-missing-the-following-properties-from-type-formgroup
-
 
 }
